@@ -14,12 +14,11 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { RegisterAndLoginContainerComponent } from './components/register-and-login-container/register-and-login-container.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material';
+import { MatExpansionModule, MatTabsModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {path: 'combine', component: RegisterAndLoginContainerComponent},
-  {path: 'register', component: RegistrationFormComponent},
-  {path: 'login', component: LoginFormComponent}
+  {path: 'account', component: ProfileSettingsComponent}
 ];
 
 @NgModule({
@@ -37,7 +36,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [UserAccount],
   bootstrap: [AppComponent]

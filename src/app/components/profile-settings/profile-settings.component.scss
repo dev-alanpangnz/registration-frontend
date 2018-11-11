@@ -1,0 +1,46 @@
+.settings-container {
+  width: 25rem;
+}
+
+.account-settings-header {
+  font-family: 'Lato', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(168,168,168,1);
+  margin-bottom: 1rem;
+}
+
+.mat-expansion-panel-header-description {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3rem;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif;
+}
+
+.mat-expansion-panel {
+  border-left: 4px solid rgba(0,122,163,1);
+  border-right: 1px solid gainsboro;
+}
+
+.account-settings-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(0,122,163,1);
+  margin-bottom: 2rem;
+}
+
+.log-out-button {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  width: auto;
+  background-color: rgba(0,122,163,1);
+  color: #FFFFFF;
+  height: 2.5rem;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+}

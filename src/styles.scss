@@ -9,3 +9,172 @@ html,body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-tab-group {
+  height: 500px;
+  border: 1px solid gainsboro;
+}
+
+.mat-tab-label {
+  width: 50% !important;
+  color: gainsboro;
+  font-family: 'Lato', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  opacity: 1 !important;
+}
+
+.mat-tab-label-active {
+  color: rgba(0,122,163,1);
+  opacity: 1 !important;
+}
+
+.mat-ink-bar {
+  background-color: rgba(0,122,163,1) !important;
+}
+
+.mat-tab-header {
+  padding-top: 1rem;
+  height: 4rem !important;
+}
+
+body {
+  height: 100%;
+}
+
+.registration-container {
+  width: 25rem;
+  //border: 1px solid gainsboro;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6rem;
+}
+
+.registration-header {
+  color: rgba(0,122,163,1);
+  font-family: 'Lato', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  width: auto;
+}
+
+.subheader-separator {
+  background-color: gainsboro;
+  width: 100%;
+  height: 1px;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+
+.field-container {
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.field-container div {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.input-field-container { }
+
+.input-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-label-text {
+  color: rgba(93,92,92,0.85);
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  width: 100%;
+  display: block;
+}
+
+.input-label-text:focus {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  width: 100%;
+  display: block;
+  color: rgba(0,122,163,1);
+  -webkit-transition: color 1s linear;
+  -moz-transition: color 1s linear;
+  -o-transition: color 1s linear;
+  transition: color 1s linear;
+}
+
+.input-styling {
+  height: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  width: 100%;
+  display: block;
+  padding: 1rem 0 0.5rem 0;
+  margin-bottom: 1rem;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 4px solid rgba(238,238,238,1);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.input-styling:focus {
+  display: block;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  outline: none;
+  border-bottom: 4px solid rgba(0,122,163,1);
+  -webkit-transition:border-bottom 1s;
+  -moz-transition:border-bottom 1s;
+  -o-transition:border-bottom 1s;
+  transition:border-bottom 1s;
+}
+
+.submit-button {
+  font-family: 'Lato', sans-serif;
+  width: 60%;
+  background-color: rgba(0,122,163,1);
+  color: #FFFFFF;
+  height: 2.5rem;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+.confirm-email-block-container {
+  background-color: rgba(225,255,215,1);
+  text-align: center;
+}
+
+.confirm-email-message {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: rgba(93,92,92,0.85);
+}
+
+.email-value {
+  color: palevioletred;
+  display: inline;
+}
+
+.account-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
