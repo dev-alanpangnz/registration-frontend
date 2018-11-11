@@ -1,35 +1,47 @@
 <div class="registration-container">
   <div class="field-container">
     <form [formGroup]="registration">
-      <div class="input-field-container">
+      <div class="input-field-container" id="username-field">
         <label for="username" class="input-label-text">Username</label>
         <input class="input-styling" formControlName="username" id="username" required>
       </div>
 
-      <div class="input-field-container">
+      <div class="input-field-container" id="email-field">
         <label for="email" class="input-label-text">Email</label>
         <input type="email" class="input-styling" formControlName="email" id="email" required>
       </div>
 
-      <div class="input-field-container">
+      <div class="input-field-container" id="password-field">
         <label for="password" class="input-label-text">Password</label>
         <input type="password" class="input-styling" formControlName="password" id="password" required>
       </div>
 
-      <div id="display-email-notification" class="confirm-email-block-container" style="display: none;">
-        <div class="confirm-email-message">An email has been sent to:
-          <div class="email-value"><br>{{registration.get("email").value}}<br></div>
-          Please go and verify your email before signing in.
-        </div>
+      <div class="input-field-container" id="verification-field" style="display: none;">
+        <label for="token" class="input-label-text">Verification Token</label>
+        <input class="input-styling" formControlName="verificationToken" id="token" required>
+        <p>An email has been sent to: {{registration.get("email").value}}</p>
       </div>
 
-      <div class="input-button-container">
+      <div id="email-verified" class="confirm-email-block-container" style="display: none;">
+        <div class="confirm-email-message">Email Verified!</div>
+      </div>
+
+      <div class="input-button-container" id="register-button">
         <input (click)="displayEmailNotification()"
                type="button"
                class="submit-button"
                id="register-new-user"
                value="Register">
       </div>
+
+      <div class="input-button-container" id="verify-button" style="display: none">
+        <input (click)="verifyEmail()"
+               type="button"
+               class="submit-button"
+               id="verify-new-user"
+               value="Verify">
+      </div>
+
     </form>
   </div>
 

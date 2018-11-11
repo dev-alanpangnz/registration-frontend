@@ -4,4 +4,5 @@ export class UserAccount {
   emailVerified: string;
   password: string;
   session: string;
+  verificationToken: string;
 }
