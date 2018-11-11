@@ -1,0 +1,25 @@
+<div class="registration-container">
+  <div class="registration-container-header"></div>
+
+  <div class="field-container">
+    <form [formGroup]="registration">
+      <div class="input-field-container">
+        <label for="username" class="input-label-text">Username</label>
+        <input class="input-styling" formControlName="username" id="username" required>
+      </div>
+
+      <div class="input-field-container">
+        <label for="email" class="input-label-text">Email</label>
+        <input type="email" class="input-styling" formControlName="email" id="email" required>
+      </div>
+
+      <div class="input-field-container">
+        <label for="password" class="input-label-text">Password</label>
+        <input type="password" class="input-styling" formControlName="password" id="password" required>
+      </div>
+
+      <input type="button" class="submit-button" id="register-new-user">
+    </form>
+  </div>
+
+</div>
