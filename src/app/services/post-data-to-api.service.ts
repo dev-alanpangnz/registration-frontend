@@ -40,4 +40,18 @@ export class PostDataToApiService {
       password: user.password
     });
   }
+
+  updateEmail(user: UserAccount): Observable<any> {
+    return this.http.put('', {
+      userName: user.username,
+      email: user.email
+    });
+  }
+
+  updatePassword(user: UserAccount): Observable<any> {
+    return this.http.put('', {
+      userName: user.username,
+      password: user.password
+    });
+  }
 }
