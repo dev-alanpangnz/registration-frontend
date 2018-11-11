@@ -24,4 +24,8 @@ export class RegistrationFormComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+
+  displayEmailNotification() {
+    document.getElementById('display-email-notification').style.display = 'block';
+  }
 }

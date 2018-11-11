@@ -1,19 +1,14 @@
 <div class="registration-container">
   <!--<div class="container-header">-->
-    <!--<div class="registration-header">Register</div>-->
+    <!--<div class="registration-header">Login</div>-->
   <!--</div>-->
   <!--<div class="subheader-separator"></div>-->
 
   <div class="field-container">
-    <form [formGroup]="registration">
+    <form [formGroup]="login">
       <div class="input-field-container">
         <label for="username" class="input-label-text">Username</label>
         <input class="input-styling" formControlName="username" id="username" required>
-      </div>
-
-      <div class="input-field-container">
-        <label for="email" class="input-label-text">Email</label>
-        <input type="email" class="input-styling" formControlName="email" id="email" required>
       </div>
 
       <div class="input-field-container">
@@ -21,15 +16,8 @@
         <input type="password" class="input-styling" formControlName="password" id="password" required>
       </div>
 
-      <div id="display-email-notification" class="confirm-email-block-container" style="display: none;">
-        <div class="confirm-email-message">An email has been sent to:
-          <div class="email-value"><br>{{registration.get("email").value}}<br></div>
-          Please go and verify your email before signing in.
-        </div>
-      </div>
-
       <div class="input-button-container">
-        <input (click)="displayEmailNotification()"
+        <input (click)="userAccountLogin()"
                type="button"
                class="submit-button"
                id="register-new-user"
