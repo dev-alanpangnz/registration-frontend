@@ -17,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule, MatTabsModule } from '@angular/material';
 
 const appRoutes: Routes = [
-  {path: 'combine', component: RegisterAndLoginContainerComponent},
+  {path: '', component: RegisterAndLoginContainerComponent},
+  {path: 'login', component: RegisterAndLoginContainerComponent},
   {path: 'account', component: ProfileSettingsComponent}
 ];
 
