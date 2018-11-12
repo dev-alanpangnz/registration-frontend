@@ -12,6 +12,8 @@ import { UserAccount } from '../../model/userAccount';
 export class LoginFormComponent implements OnInit {
 
   login: FormGroup;
+  submitted = false;
+  errorMessage: String;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -21,6 +23,17 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.login.invalid) {
+      this.errorMessage = 'All fields are required for submission';
+      document.getElementById('login-form-feedback').style.display = 'inline';
+      return;
+    }
+    this.userAccountLogin();
   }
 
   createForm() {
@@ -36,7 +49,8 @@ export class LoginFormComponent implements OnInit {
       .subscribe(() => {
         this.router.navigate(['/account'], {queryParams: {user: this.userData.username}});
     }, () => {
-      document.getElementById('incorrect-credentials').style.display = 'block';
+        this.errorMessage = 'Incorrect Username or Password';
+      document.getElementById('login-form-feedback').style.display = 'block';
     });
   }
 

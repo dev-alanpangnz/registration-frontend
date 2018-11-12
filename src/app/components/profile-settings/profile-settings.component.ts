@@ -15,6 +15,9 @@ export class ProfileSettingsComponent implements OnInit {
 
   emailSettings: FormGroup;
   passwordSettings: FormGroup;
+  submitted = false;
+  emailFeedbackMessage: String;
+  passwordFeedbackMessage: String;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -47,29 +50,27 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   changeEmail() {
+    this.submitted = true;
     this.setDataForEmailChange();
-    this.postService.updateEmail(this.userData).subscribe(() => {
-      // Show feedback
-      console.log('Email Successfully Updated');
-    }, () => {
-      // Show feedback
-      console.log('Incorrect Email, please try again');
-    });
+
+    if (this.emailSettings.invalid) {
+      this.emailFeedbackMessage = 'All fields are required for submission';
+      document.getElementById('change-email-form-feedback').style.display = 'inline';
+      return;
+    }
+    this.callApiEmailUpdate();
   }
 
   changePassword() {
+    this.submitted = true;
     this.setDataForPasswordChange();
-    if (this.passwordSettings.get('newPassword').value === this.passwordSettings.get('confirmPassword').value) {
-      this.postService.updatePassword(this.userData).subscribe(() => {
-        // Show feedback
-        console.log('Password successfully updated');
-      }, () => {
-        // Show feedback
-        console.log('Incorrect Password, please try again');
-      });
-    } else {
-      console.log('Your password does not match');
+
+    if (this.passwordSettings.invalid) {
+      this.passwordFeedbackMessage = 'All fields are required for submission';
+      document.getElementById('change-password-form-feedback').style.display = 'inline';
+      return;
     }
+    this.callApiPasswordUpdate();
   }
 
   logOut() {
@@ -83,5 +84,30 @@ export class ProfileSettingsComponent implements OnInit {
 
   private setDataForPasswordChange() {
     this.userData.password = this.passwordSettings.get('newPassword').value;
+  }
+
+  private callApiEmailUpdate() {
+    this.postService.updateEmail(this.userData).subscribe(() => {
+      this.emailFeedbackMessage = 'Email Successfully Changed!';
+      document.getElementById('change-email-form-feedback').style.display = 'block';
+    }, (res) => {
+      this.emailFeedbackMessage = res.error.message;
+      document.getElementById('change-email-form-feedback').style.display = 'block';
+    });
+  }
+
+  private callApiPasswordUpdate() {
+    if (this.passwordSettings.get('newPassword').value === this.passwordSettings.get('confirmPassword').value) {
+      this.postService.updatePassword(this.userData).subscribe(() => {
+        this.passwordFeedbackMessage = 'Password Successfully Updated!';
+        document.getElementById('change-password-form-feedback').style.display = 'block';
+      }, (res) => {
+        this.passwordFeedbackMessage = res.error.message;
+        document.getElementById('change-password-form-feedback').style.display = 'block';
+      });
+    } else {
+      this.passwordFeedbackMessage = 'Your password does not match';
+      document.getElementById('change-password-form-feedback').style.display = 'block';
+    }
   }
 }

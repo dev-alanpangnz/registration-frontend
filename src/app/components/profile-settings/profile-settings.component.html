@@ -9,12 +9,24 @@
       <form [formGroup]="emailSettings">
         <div class="input-field-container">
           <label for="current-email" class="input-label-text">Current Email</label>
-          <input type="email" class="input-styling" formControlName="currentEmail" id="current-email" required>
+          <input type="email"
+                 class="input-styling"
+                 formControlName="currentEmail"
+                 id="current-email"
+                 [ngClass]="{'is-invalid': submitted && emailSettings.controls['currentEmail'].error }">
         </div>
 
         <div class="input-field-container">
           <label for="new-email" class="input-label-text">New Email</label>
-          <input type="email" class="input-styling" formControlName="newEmail" id="new-email" required>
+          <input type="email"
+                 class="input-styling"
+                 formControlName="newEmail"
+                 id="new-email"
+                 [ngClass]="{'is-invalid': submitted && emailSettings.controls['newEmail'].error }">
+        </div>
+
+        <div id="change-email-form-feedback" class="feedback-message" style="display: none;">
+          <div class="feedback-message-style">{{emailFeedbackMessage}}</div>
         </div>
 
         <div class="account-button-container">
@@ -39,17 +51,33 @@
       <form [formGroup]="passwordSettings">
         <div class="input-field-container">
           <label for="current-password" class="input-label-text">Current Password</label>
-          <input type="password" class="input-styling" formControlName="currentPassword" id="current-password" required>
+          <input type="password"
+                 class="input-styling"
+                 formControlName="currentPassword"
+                 id="current-password"
+                 [ngClass]="{'is-invalid': submitted && passwordSettings.controls['currentPassword'].error }">
         </div>
 
         <div class="input-field-container">
           <label for="new-password" class="input-label-text">New Password</label>
-          <input type="password" class="input-styling" formControlName="newPassword" id="new-password" required>
+          <input type="password"
+                 class="input-styling"
+                 formControlName="newPassword"
+                 id="new-password"
+                 [ngClass]="{'is-invalid': submitted && passwordSettings.controls['newPassword'].error }">
         </div>
 
         <div class="input-field-container">
           <label for="confirm-password" class="input-label-text">Confirm Password</label>
-          <input type="password" class="input-styling" formControlName="confirmPassword" id="confirm-password" required>
+          <input type="password"
+                 class="input-styling"
+                 formControlName="confirmPassword"
+                 id="confirm-password"
+                 [ngClass]="{'is-invalid': submitted && passwordSettings.controls['confirmPassword'].error }">
+        </div>
+
+        <div id="change-password-form-feedback" class="feedback-message" style="display: none;">
+          <div class="feedback-message-style">{{passwordFeedbackMessage}}</div>
         </div>
 
         <div class="account-button-container">

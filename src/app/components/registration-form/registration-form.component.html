@@ -3,27 +3,40 @@
     <form [formGroup]="registration">
       <div class="input-field-container" id="username-field">
         <label for="username" class="input-label-text">Username</label>
-        <input class="input-styling" formControlName="username" id="username" required>
-      </div>
-
-      <div id="existing-user" class="existing-user" style="display: none;">
-        <div class="incorrect-credentials-message">{{usernameError}}</div>
+        <input class="input-styling"
+               formControlName="username"
+               id="username"
+               [ngClass]="{'is-invalid': submitted && registration.controls['username'].error }">
       </div>
 
       <div class="input-field-container" id="email-field">
         <label for="email" class="input-label-text">Email</label>
-        <input type="email" class="input-styling" formControlName="email" id="email" required>
+        <input type="email"
+               class="input-styling"
+               formControlName="email"
+               id="email"
+               [ngClass]="{'is-invalid': submitted && registration.controls['email'].error }">
       </div>
 
       <div class="input-field-container" id="password-field">
         <label for="password" class="input-label-text">Password</label>
-        <input type="password" class="input-styling" formControlName="password" id="password" required>
+        <input type="password"
+               class="input-styling"
+               formControlName="password"
+               id="password"
+               [ngClass]="{'is-invalid': submitted && registration.controls['password'].error }">
       </div>
 
       <div class="input-field-container" id="verification-field" style="display: none;">
         <label for="token" class="input-label-text">Verification Token</label>
-        <input class="input-styling" formControlName="verificationToken" id="token" required>
+        <input class="input-styling"
+               formControlName="verificationToken"
+               id="token">
         <p>An email has been sent to: {{registration.get("email").value}}</p>
+      </div>
+
+      <div id="error-feedback-message" class="existing-user" style="display: none;">
+        <div class="incorrect-credentials-message">{{errorMessage}}</div>
       </div>
 
       <div id="email-verified" class="confirm-email-block-container" style="display: none;">
@@ -31,7 +44,7 @@
       </div>
 
       <div class="input-button-container" id="register-button">
-        <input (click)="displayEmailNotification()"
+        <input (click)="onSubmit()"
                type="button"
                class="submit-button"
                id="register-new-user"

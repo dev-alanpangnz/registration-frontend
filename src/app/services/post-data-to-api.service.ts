@@ -8,23 +8,15 @@ import { Observable } from 'rxjs/index';
 })
 export class PostDataToApiService {
 
-  constructor(private http: HttpClient, private userAccountData: UserAccount) {}
+  constructor(private http: HttpClient) {}
 
-  registerUser(user: UserAccount) {
-    this.http.post('http://localhost:8080/account/create', {
+  registerUser(user: UserAccount): Observable<any> {
+    return this.http.post('http://localhost:8080/account/create', {
       userName: user.username,
       email: user.email,
       password: user.password,
       emailVerified: 'false',
-    })
-      .subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.log('Error occured');
-        }
-      );
+    });
   }
 
   updateEmailVerification(user: UserAccount): Observable<any> {
@@ -53,9 +45,5 @@ export class PostDataToApiService {
       userName: user.username,
       password: user.password
     });
-  }
-
-  checkIfUserExists(username: String): Observable<any> {
-   return this.http.get('http://localhost:8080/account/' + username);
   }
 }

@@ -11,7 +11,8 @@ import { UserAccount } from '../../model/userAccount';
 export class RegistrationFormComponent implements OnInit {
 
   registration: FormGroup;
-  usernameError: String;
+  errorMessage: String;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private postService: PostDataToApiService,
@@ -22,25 +23,34 @@ export class RegistrationFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.registration.invalid) {
+      this.errorMessage = 'All fields are required for submission';
+      document.getElementById('error-feedback-message').style.display = 'inline';
+      return;
+    }
+    this.displayEmailNotification();
+  }
+
   createForm() {
     this.registration = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      verificationToken: ['', Validators.required]
+      verificationToken: ['']
     });
   }
 
   displayEmailNotification() {
     this.setUserDataForRegistration();
-    this.showVerificationCodeScreen();
-    this.postService.registerUser(this.userData);
-    // Check if user exists
-    // this.postService.checkIfUserExists(this.userData.username).subscribe(() => {
-    // }, () => {
-    //   this.usernameError = 'Username already exists';
-    //   document.getElementById('existing-user').style.display = 'block';
-    // });
+    this.postService.registerUser(this.userData).subscribe(() => {
+      this.showVerificationCodeScreen();
+    }, (res) => {
+        this.errorMessage = res.error.message;
+        document.getElementById('error-feedback-message').style.display = 'block';
+    });
   }
 
   verifyEmail() {

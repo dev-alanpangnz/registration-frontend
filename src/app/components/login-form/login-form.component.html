@@ -3,21 +3,28 @@
     <form [formGroup]="login">
       <div class="input-field-container">
         <label for="username" class="input-label-text">Username</label>
-        <input class="input-styling" formControlName="username" id="username" required>
+        <input class="input-styling"
+               formControlName="username"
+               id="username"
+               [ngClass]="{'is-invalid': submitted && login.controls['username'].error }">
       </div>
 
       <div class="input-field-container">
         <label for="password" class="input-label-text">Password</label>
-        <input type="password" class="input-styling" formControlName="password" id="password" required>
+        <input type="password"
+               class="input-styling"
+               formControlName="password"
+               id="password"
+               [ngClass]="{'is-invalid': submitted && login.controls['password'].error }">
       </div>
 
-      <div id="incorrect-credentials" class="incorrect-credentials" style="display: none;">
-        <div class="incorrect-credentials-message">Incorrect Username or Password</div>
+      <div id="login-form-feedback" class="incorrect-credentials" style="display: none;">
+        <div class="incorrect-credentials-message">{{errorMessage}}</div>
       </div>
 
       <div class="input-button-container">
-        <input (click)="userAccountLogin()"
-               type="button"
+        <input type="button"
+               (click)="onSubmit()"
                class="submit-button"
                id="register-new-user"
                value="Login">
