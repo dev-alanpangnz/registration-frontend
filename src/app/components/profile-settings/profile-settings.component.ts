@@ -48,7 +48,6 @@ export class ProfileSettingsComponent implements OnInit {
 
   changeEmail() {
     this.setDataForEmailChange();
-    console.log(this.userData);
     this.postService.updateEmail(this.userData).subscribe(() => {
       // Show feedback
       console.log('Email Successfully Updated');
@@ -60,14 +59,17 @@ export class ProfileSettingsComponent implements OnInit {
 
   changePassword() {
     this.setDataForPasswordChange();
-    console.log(this.userData);
-    this.postService.updatePassword(this.userData).subscribe(() => {
-      // Show feedback
-      console.log('Password successfully updated');
-    }, () => {
-      // Show feedback
-      console.log('Incorrect Password, please try again');
-    });
+    if (this.passwordSettings.get('newPassword').value === this.passwordSettings.get('confirmPassword').value) {
+      this.postService.updatePassword(this.userData).subscribe(() => {
+        // Show feedback
+        console.log('Password successfully updated');
+      }, () => {
+        // Show feedback
+        console.log('Incorrect Password, please try again');
+      });
+    } else {
+      console.log('Your password does not match');
+    }
   }
 
   logOut() {
