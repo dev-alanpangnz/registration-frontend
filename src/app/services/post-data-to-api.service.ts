@@ -54,4 +54,8 @@ export class PostDataToApiService {
       password: user.password
     });
   }
+
+  checkIfUserExists(username: String): Observable<any> {
+   return this.http.get('http://localhost:8080/account/' + username);
+  }
 }

@@ -6,6 +6,10 @@
         <input class="input-styling" formControlName="username" id="username" required>
       </div>
 
+      <div id="existing-user" class="existing-user" style="display: none;">
+        <div class="incorrect-credentials-message">{{usernameError}}</div>
+      </div>
+
       <div class="input-field-container" id="email-field">
         <label for="email" class="input-label-text">Email</label>
         <input type="email" class="input-styling" formControlName="email" id="email" required>

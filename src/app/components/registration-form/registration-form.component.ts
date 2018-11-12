@@ -11,6 +11,7 @@ import { UserAccount } from '../../model/userAccount';
 export class RegistrationFormComponent implements OnInit {
 
   registration: FormGroup;
+  usernameError: String;
 
   constructor(private formBuilder: FormBuilder,
               private postService: PostDataToApiService,
@@ -31,16 +32,15 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   displayEmailNotification() {
-    document.getElementById('username-field').style.display = 'none';
-    document.getElementById('email-field').style.display = 'none';
-    document.getElementById('password-field').style.display = 'none';
-
-    document.getElementById('register-button').style.display = 'none';
-    document.getElementById('verification-field').style.display = 'block';
-    document.getElementById('verify-button').style.display = 'block';
-
     this.setUserDataForRegistration();
+    this.showVerificationCodeScreen();
     this.postService.registerUser(this.userData);
+    // Check if user exists
+    // this.postService.checkIfUserExists(this.userData.username).subscribe(() => {
+    // }, () => {
+    //   this.usernameError = 'Username already exists';
+    //   document.getElementById('existing-user').style.display = 'block';
+    // });
   }
 
   verifyEmail() {
@@ -63,5 +63,15 @@ export class RegistrationFormComponent implements OnInit {
 
   private showSuccessMessage() {
     document.getElementById('email-verified').style.display = 'block';
+  }
+
+  private showVerificationCodeScreen() {
+    document.getElementById('username-field').style.display = 'none';
+    document.getElementById('email-field').style.display = 'none';
+    document.getElementById('password-field').style.display = 'none';
+
+    document.getElementById('register-button').style.display = 'none';
+    document.getElementById('verification-field').style.display = 'block';
+    document.getElementById('verify-button').style.display = 'block';
   }
 }
