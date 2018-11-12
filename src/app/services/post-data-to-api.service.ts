@@ -42,14 +42,14 @@ export class PostDataToApiService {
   }
 
   updateEmail(user: UserAccount): Observable<any> {
-    return this.http.put('', {
+    return this.http.put('http://localhost:8080/account/update/email', {
       userName: user.username,
       email: user.email
     });
   }
 
   updatePassword(user: UserAccount): Observable<any> {
-    return this.http.put('', {
+    return this.http.put('http://localhost:8080/account/update/password', {
       userName: user.username,
       password: user.password
     });

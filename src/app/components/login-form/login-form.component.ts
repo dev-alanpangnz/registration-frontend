@@ -34,7 +34,7 @@ export class LoginFormComponent implements OnInit {
     this.setUserDataForLogin();
     this.postService.logInToAccount(this.userData)
       .subscribe(() => {
-      this.router.navigateByUrl('account');
+        this.router.navigate(['/account'], {queryParams: {user: this.userData.username}});
     }, () => {
       document.getElementById('incorrect-credentials').style.display = 'block';
     });

@@ -1,9 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PostDataToApiService} from '../../services/post-data-to-api.service';
 import {UserAccount} from '../../model/userAccount';
-import {LoginFormComponent} from '../login-form/login-form.component';
 
 @Component({
   selector: 'app-profile-settings',
@@ -12,8 +11,7 @@ import {LoginFormComponent} from '../login-form/login-form.component';
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  @ViewChild(LoginFormComponent)
-  private loginComponent: LoginFormComponent;
+  // Todo: Authenticate with existing fields before changing credentials
 
   emailSettings: FormGroup;
   passwordSettings: FormGroup;
@@ -21,12 +19,16 @@ export class ProfileSettingsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private postService: PostDataToApiService,
-              private userData: UserAccount) {
+              private userData: UserAccount,
+              private url: ActivatedRoute) {
     this.createEmailForm();
     this.createPasswordForm();
   }
 
   ngOnInit() {
+    this.url.queryParams.subscribe(params => {
+      this.userData.username = params['user'];
+    });
   }
 
   createEmailForm() {
@@ -47,36 +49,37 @@ export class ProfileSettingsComponent implements OnInit {
   changeEmail() {
     this.setDataForEmailChange();
     console.log(this.userData);
-    // this.postService.updateEmail(this.userData).subscribe(() => {
-    //   console.log('Email Successfully Updated');
-    // }, () => {
-    //   console.log('Incorrect Email, please try again');
-    // });
+    this.postService.updateEmail(this.userData).subscribe(() => {
+      // Show feedback
+      console.log('Email Successfully Updated');
+    }, () => {
+      // Show feedback
+      console.log('Incorrect Email, please try again');
+    });
   }
 
   changePassword() {
     this.setDataForPasswordChange();
     console.log(this.userData);
-    // this.postService.updatePassword(this.userData).subscribe(() => {
-    //   console.log('Password successfully updated');
-    // }, () => {
-    //   console.log('Incorrect Password, please try again');
-    // });
+    this.postService.updatePassword(this.userData).subscribe(() => {
+      // Show feedback
+      console.log('Password successfully updated');
+    }, () => {
+      // Show feedback
+      console.log('Incorrect Password, please try again');
+    });
   }
 
   logOut() {
-    // Clean UserAccount object before navigating back to home.
     this.userData = new UserAccount();
     this.router.navigateByUrl('');
   }
 
   private setDataForEmailChange() {
-    this.userData.username = this.loginComponent.login.get('username').value;
     this.userData.email = this.emailSettings.get('newEmail').value;
   }
 
   private setDataForPasswordChange() {
-    this.userData.username = this.loginComponent.login.get('username').value;
     this.userData.password = this.passwordSettings.get('newPassword').value;
   }
 }
