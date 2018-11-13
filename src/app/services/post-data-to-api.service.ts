@@ -46,4 +46,10 @@ export class PostDataToApiService {
       password: user.password
     });
   }
+
+  resendVerificationCode(user: UserAccount): Observable<any> {
+    return this.http.post('http://localhost:8080/account/verify', {
+      userName: user.username
+    });
+  }
 }

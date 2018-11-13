@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { EmailConfirmationPageComponent } from './components/email-confirmation-page/email-confirmation-page.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserAccount } from './model/userAccount';
@@ -26,7 +25,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     RegistrationFormComponent,
-    EmailConfirmationPageComponent,
     ProfileSettingsComponent,
     LoginFormComponent,
     RegisterAndLoginContainerComponent
