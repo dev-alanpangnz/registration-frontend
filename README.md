@@ -1,6 +1,7 @@
 # RegistrationFrontend
 
-In order to run this project properly, you must have executed `docker-compose up` for the registration-api project.
+In order to run this project properly, you must have executed `docker-compose up` for the registration-api project 
+and firewalls cannot block email verifications.
 This project is by no means a full function web frontend application, as it queries localhost (reserved for registration-api).
 
 ## Dockerfile
