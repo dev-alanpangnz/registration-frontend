@@ -23,6 +23,10 @@ export class RegistrationFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  refresh() {
+    this.registration.reset();
+  }
+
   onSubmit() {
     this.submitted = true;
 

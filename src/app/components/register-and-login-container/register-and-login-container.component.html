@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group (selectedTabChange)="onTabChanged($event)">
   <mat-tab label="Register">
     <app-registration-form></app-registration-form>
   </mat-tab>
