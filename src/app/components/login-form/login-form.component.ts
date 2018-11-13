@@ -27,6 +27,7 @@ export class LoginFormComponent implements OnInit {
 
   refresh() {
     this.login.reset();
+    document.getElementById('login-form-feedback').style.display = 'none';
   }
 
   onSubmit() {

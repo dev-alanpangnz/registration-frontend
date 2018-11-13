@@ -25,6 +25,7 @@ export class RegistrationFormComponent implements OnInit {
 
   refresh() {
     this.registration.reset();
+    document.getElementById('error-feedback-message').style.display = 'none';
   }
 
   onSubmit() {
