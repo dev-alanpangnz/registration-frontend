@@ -79,6 +79,7 @@ export class RegistrationFormComponent implements OnInit {
     document.getElementById('username-field').style.display = 'none';
     document.getElementById('email-field').style.display = 'none';
     document.getElementById('password-field').style.display = 'none';
+    document.getElementById('error-feedback-message').style.display = 'none';
 
     document.getElementById('register-button').style.display = 'none';
     document.getElementById('verification-field').style.display = 'block';
