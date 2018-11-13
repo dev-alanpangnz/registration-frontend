@@ -1,9 +1,9 @@
+<div class="profile-container">
 <div class="account-settings-title">Account Settings</div>
 <mat-accordion>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title class="account-settings-header">Change Email</mat-panel-title>
-      <!--<mat-panel-description>Click here to update your email address</mat-panel-description>-->
     </mat-expansion-panel-header>
     <div class="settings-container">
       <form [formGroup]="emailSettings">
@@ -45,7 +45,6 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title class="account-settings-header">Change Password</mat-panel-title>
-      <!--<mat-panel-description>Click here to change your password</mat-panel-description>-->
     </mat-expansion-panel-header>
     <div class="settings-container">
       <form [formGroup]="passwordSettings">
@@ -93,5 +92,5 @@
   </mat-expansion-panel>
 </mat-accordion>
 <input type="button" class="log-out-button" (click)="logOut()" value="Log Out">
-
+</div>
 
