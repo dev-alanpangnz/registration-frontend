@@ -5,7 +5,7 @@ This project is by no means a full function web frontend application, as it quer
 
 ## Dockerfile
 
-Navigate to the project and execute the following commands:
+####Navigate to the project and execute the following commands:
 - ng build --prod
 - docker build -t "name" .
 - docker run -p 3000:80 --rm "name"
@@ -20,7 +20,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Theres a lot of validation in this
+## Theres a lot of validation in this project
 
 Please note that the frontend flow will be broken if company network firewall blocks email
 verification. The API must be running and must be able to send email verifications.
