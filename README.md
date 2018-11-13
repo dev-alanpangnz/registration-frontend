@@ -21,7 +21,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Theres a lot of validation in this project
+## There's a bit of validation in this project
 
 Please note that the frontend flow will be broken if company network firewall blocks email
 verification. The API must be running and must be able to send email verifications.
