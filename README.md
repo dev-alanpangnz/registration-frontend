@@ -7,7 +7,7 @@ This project is by no means a full function web frontend application, as it quer
 ## Dockerfile
 
 ####Navigate to the project and execute the following commands:
-- ng build --prod
+- ng build --prod (Must have Angular CLI installed, if not do: npm install -g @angular/cli)
 - docker build -t "name" .
 - docker run -p 3000:80 --rm "name"
 
